@@ -10,7 +10,7 @@ node_modules/
 .env.*.local
 
 # VitePress cache
-.vitepress/cache/
+docs/.vitepress/cache/
 
 # IDE specific files
 .idea/
