@@ -1,86 +1,101 @@
 // @ts-check
-// Note: type annotations allow type checking and IDEs autocompletion
+// `@type` JSDoc annotations allow editor autocompletion and type checking
+// (when paired with `@ts-check`).
+// There are various equivalent ways to declare your Docusaurus config.
+// See: https://docusaurus.io/docs/api/docusaurus-config
 
-const lightCodeTheme = require("prism-react-renderer/themes/github");
-const darkCodeTheme = require("prism-react-renderer/themes/dracula");
+import {themes as prismThemes} from 'prism-react-renderer';
 
-/** @type {import("@docusaurus/types").Config} */
+// This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
+
+/** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "Wave Docs",
-  tagline: "",
-  favicon: "img/favicon.ico",
+  title: 'Wave Docs',
+  tagline: '',
+  favicon: 'img/favicon.ico',
+
+  // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
+  future: {
+    v4: true, // Improve compatibility with the upcoming Docusaurus v4
+  },
 
   // Set the production url of your site here
-  url: "https://eujandergois.github.io",
+  url: 'https://eujandergois.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often "/<projectName>/"
-  baseUrl: "/docs/",
+  // For GitHub pages deployment, it is often '/<projectName>/'
+  baseUrl: '/docs/',
 
   // GitHub pages deployment config.
-  // If you aren"t using GitHub pages, you don"t need these.
-  organizationName: "EuJanderGois", // Usually your GitHub org/user name.
-  deploymentBranch: "gh-pages",
+  // If you aren't using GitHub pages, you don't need these.
+  organizationName: 'EuJanderGois', // Usually your GitHub org/user name.
+  projectName: 'gh-pages', // Usually your repo name.
   trailingSlash: false,
-  projectName: "docs", // Usually your repo name.
+  onBrokenLinks: 'throw',
+  onBrokenMarkdownLinks: 'warn',
 
-  onBrokenLinks: "throw",
-  onBrokenMarkdownLinks: "warn",
-
-  // Even if you don"t use internalization, you can use this field to set useful
-  // metadata like html lang. For example, if your site is Chinese, you may want
-  // to replace "en" with "zh-Hans".
+  // Even if you don't use internationalization, you can use this field to set
+  // useful metadata like html lang. For example, if your site is Chinese, you
+  // may want to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: "pt-BR",
-    locales: ["pt-BR"],
+    defaultLocale: "en",
+    locales: ["en"],
   },
 
   presets: [
     [
-      "classic",
-      /** @type {import("@docusaurus/preset-classic").Options} */
+      'classic',
+      /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          sidebarPath: require.resolve("./sidebars.js"),
+          sidebarPath: './sidebars.js',
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          // editUrl: "https://github.com/eujandergois/docs/",
+          // editUrl: 'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
         blog: {
           showReadingTime: true,
+          feedOptions: {
+            type: ['rss', 'atom'],
+            xslt: true,
+          },
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          // editUrl: "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
+          // editUrl: 'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          // Useful options to enforce blogging best practices
+          onInlineTags: 'warn',
+          onInlineAuthors: 'warn',
+          onUntruncatedBlogPosts: 'warn',
         },
         theme: {
-          customCss: require.resolve("./src/css/custom.css"),
+          customCss: './src/css/custom.css',
         },
       }),
     ],
   ],
 
   themeConfig:
-    /** @type {import("@docusaurus/preset-classic").ThemeConfig} */
+    /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      // Replace with your project"s social card
-      image: "img/docusaurus-social-card.jpg",
+      // Replace with your project's social card
+      image: 'img/docusaurus-social-card.jpg',
       navbar: {
-        title: "Wave Docs",
+        title: 'My Site',
         logo: {
-          alt: "My Site Logo",
-          src: "img/logo.svg",
+          alt: 'My Site Logo',
+          src: 'img/logo.svg',
         },
         items: [
           {
-            type: "docSidebar",
-            sidebarId: "tutorialSidebar",
-            position: "left",
-            label: "Docs",
+            type: 'docSidebar',
+            sidebarId: 'tutorialSidebar',
+            position: 'left',
+            label: 'Docs',
           },
-          {to: "/blog", label: "Blog", position: "left"},
+          {to: '/blog', label: 'Blog', position: 'left'},
           {
-            href: "https://github.com/eujandergois/docs",
-            label: "GitHub",
-            position: "right",
+            href: 'https://github.com/facebook/docusaurus',
+            label: 'GitHub',
+            position: 'right',
           },
         ],
       },
@@ -92,19 +107,19 @@ const config = {
             items: [
               {
                 label: "Introdução",
-                to: "/docs/intro",
+                to: "/",
               },
               {
                 label: "Wave UI",
-                to: "/docs/wave-ui/intro",
+                to: "/",
               },
               {
                 label: "Wave Engine",
-                to: "/docs/wave-engine/intro",
+                to: "/",
               },
               {
                 label: "Guias Rápidos",
-                to: "/docs/quick-guides/intro",
+                to: "/",
               },
             ],
           },
@@ -142,10 +157,10 @@ const config = {
         copyright: `Copyright © ${new Date().getFullYear()} | Digital Wave | Make with ❤️.`,
       },
       prism: {
-        theme: lightCodeTheme,
-        darkTheme: darkCodeTheme,
+        theme: prismThemes.github,
+        darkTheme: prismThemes.dracula,
       },
     }),
 };
 
-module.exports = config;
+export default config;
